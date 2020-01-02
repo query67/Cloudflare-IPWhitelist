@@ -1,2 +1,2 @@
-# Cloudflare_IPWhitelist
+# Cloudflare IPWhitelist
 Whitelist CloudFlare's IPs

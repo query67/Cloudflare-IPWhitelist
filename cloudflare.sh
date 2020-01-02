@@ -4,6 +4,10 @@ output(){
     echo -e '\e[36m'$1'\e[0m';
 }
 
+if [ -r /etc/os-release ]; then
+    lsb_dist="$(. /etc/os-release && echo "$ID")"
+fi
+
 if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
      apt -y install ufw
      # Opening Port 22 just in case so that we do not lose the internet connection when the rules are applied.

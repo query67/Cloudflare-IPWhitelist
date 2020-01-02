@@ -36,4 +36,10 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
      firewall-cmd --reload
 else 
      output "Unsupported distribution. This script only supports Fedora, RHEL, CentOS, Ubuntu, and Debian."
+     exit 1
 fi 
+
+rm ips-v4
+rm ips-v6
+
+output "Cloudflare IPs have been whitelisted on port 80 and 443!"

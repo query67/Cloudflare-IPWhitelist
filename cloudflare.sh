@@ -15,6 +15,18 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
      wget https://www.cloudflare.com/ips-v4
      wget https://www.cloudflare.com/ips-v6
      
+     for ips in ips-v4;
+     do
+        ufw allow from $ips to any proto tcp port 80
+        ufw allow from $ips to any proto tcp port 443
+     done
+     
+     for ips in ips-v6;
+     do
+        ufw allow from $ips to any proto tcp port 80
+        ufw allow from $ips to any proto tcp port 443
+     done
+     
      yes | ufw enable
 elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =  "centos" ]; then
      yum -y install firewalld wget

@@ -21,7 +21,7 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
         ufw allow from $ips to any proto tcp port 443
      done
      
-     for ips in `cat ips-v4`;
+     for ips in `cat ips-v6`;
      do
         ufw allow from $ips to any proto tcp port 80
         ufw allow from $ips to any proto tcp port 443

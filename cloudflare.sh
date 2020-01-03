@@ -40,8 +40,8 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
      
      for ips in `cat ips-v6`;
      do
-        firewall-cmd --add-rich-rule='rule family="ipv6" source address="$ips" port port="80" protocol="tcp" accept'
-        firewall-cmd --add-rich-rule='rule family="ipv6" source address="$ips" port port="443" protocol="tcp" accept'
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv6" source address="$ips" port port="80" protocol="tcp" accept'
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv6" source address="$ips" port port="443" protocol="tcp" accept'
      done
      firewall-cmd --reload
 else 

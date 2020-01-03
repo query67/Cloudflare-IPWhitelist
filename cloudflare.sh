@@ -39,8 +39,8 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
      wget https://www.cloudflare.com/ips-v6
      for ips in `cat ips-v4`;
      do
-        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="$ips" port port="80" protocol="tcp" accept'
-        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="$ips" port port="443" protocol="tcp" accept'
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="${ips}" port port="80" protocol="tcp" accept'
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="${ips}" port port="443" protocol="tcp" accept'
      done
      
      for ips in `cat ips-v6`;

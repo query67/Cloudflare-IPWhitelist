@@ -4,6 +4,11 @@ output(){
     echo -e '\e[36m'$1'\e[0m';
 }
 
+output "Cloudflare IPWhitelist Script"
+output "Copyright © 2019 Thien Tran <contact@thientran.io>."
+output "Support: https://thientran.io/discord"
+output ""
+
 if [ -r /etc/os-release ]; then
     lsb_dist="$(. /etc/os-release && echo "$ID")"
 fi

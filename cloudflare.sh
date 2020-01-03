@@ -32,7 +32,17 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
      yum -y install firewalld wget
      wget https://www.cloudflare.com/ips-v4
      wget https://www.cloudflare.com/ips-v6
+     for ips in `cat ips-v4`;
+     do
+        firewall-cmd --add-rich-rule='rule family="ipv4" source address="$ips" port port="80" protocol="tcp" accept'
+        firewall-cmd --add-rich-rule='rule family="ipv4" source address="$ips" port port="443" protocol="tcp" accept'
+     done
      
+     for ips in `cat ips-v6`;
+     do
+        firewall-cmd --add-rich-rule='rule family="ipv6" source address="$ips" port port="80" protocol="tcp" accept'
+        firewall-cmd --add-rich-rule='rule family="ipv6" source address="$ips" port port="443" protocol="tcp" accept'
+     done
      firewall-cmd --reload
 else 
      output "Unsupported distribution. This script only supports Fedora, RHEL, CentOS, Ubuntu, and Debian."

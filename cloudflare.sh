@@ -86,4 +86,4 @@ fi
 rm ips-v4
 rm ips-v6
 
-output "Cloudflare IPs have been whitelisted on port 80 and 443!"
+output "Cloudflare IPs have been whitelisted on your selected ports!"

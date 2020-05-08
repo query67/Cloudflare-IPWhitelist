@@ -46,6 +46,7 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
      for ips in `cat ips-v4`;
      do
         for port in "${ports[@]}";
+        do
             ufw allow from $ips to any proto tcp port $port
         done
      done
@@ -53,6 +54,7 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
      for ips in `cat ips-v6`;
      do
         for port in "${ports[@]}";
+        do
             ufw allow from $ips to any proto tcp port $port
         done
      done

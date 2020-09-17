@@ -48,6 +48,7 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
         for port in "${ports[@]}";
         do
             ufw allow from $ips to any proto tcp port $port
+            ufw allow from $ips to any proto udp port $port
         done
      done
      
@@ -56,6 +57,7 @@ if [ "$lsb_dist" =  "ubuntu" ] || [ "$lsb_dist" =  "debian" ]; then
         for port in "${ports[@]}";
         do
             ufw allow from $ips to any proto tcp port $port
+            ufw allow from $ips to any proto udp port $port
         done
      done
      
@@ -69,6 +71,7 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
         for port in "${ports[@]}";
         do
           firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address='"$ips"' port port='"$port"' protocol="tcp" accept'
+          firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address='"$ips"' port port='"$port"' protocol="udp" accept'
         done
      done
      
@@ -77,6 +80,7 @@ elif [ "$lsb_dist" =  "fedora" ] || [ "$lsb_dist" =  "rhel" ] || [ "$lsb_dist" =
         for port in "${ports[@]}";
         do
           firewall-cmd --permanent --add-rich-rule='rule family="ipv6" source address='"$ips"' port port='"$port"' protocol="tcp" accept'
+          firewall-cmd --permanent --add-rich-rule='rule family="ipv6" source address='"$ips"' port port='"$port"' protocol="udp" accept'
         done
      done
      firewall-cmd --reload
